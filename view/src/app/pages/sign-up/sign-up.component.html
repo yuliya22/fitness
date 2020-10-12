@@ -1,0 +1,237 @@
+<div class="back-img h-100">
+    <div>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <!-- Brand/logo -->
+            <a class="navbar-brand" href="#">
+                <img src='./../../../assets/images/background/user-info.jpg' alt="logo" style="width:40px;">
+            </a>
+
+            <!-- Links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home">Home</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="/signUp">Sign Up</a>
+                </li> -->
+
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container-fluid min-vh-100 justify-content-center align-items-center" style="width:40%">
+        <div class="card bg-dark">
+            <div class="card-body text-white">
+                <form [formGroup]="signUpForm" (ngSubmit)="register()">
+                    <div class="form-group">
+                        <h2>RBN Fitness Questionnaire</h2>
+                        <p>I hope you're ready for your Transformation. I keep this questionnaire very simple and
+                            straight to the point. This information will help me set up a program specifically designed
+                            to optimize your transformation. Please fill out the questions as ACCURATE as possible.</p>
+                    </div>
+                    <div class="form-group">
+                        <label>fullName<span class="text-danger">*</span></label>
+                        <input matInput class="form-control" formControlName="fullName" type="text"
+                            [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }">
+                        <div *ngIf="submitted&&f.fullName.errors" class="invalid-feedback d-block font-20">
+                            <div *ngIf="f.fullName.errors.required">
+                                FullName field is required
+                            </div>
+                            <div *ngIf="f.fullName.errors.pattern">
+                                FullName is alphabetics.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender:<span class="text-danger">*</span></label>
+                        <div>
+                            <input id="male" type="radio" value="mail" name="gender" formControlName="gender">
+                            <label for="male">male</label>
+                        </div>
+
+                        <div>
+                            <input id="female" type="radio" value="female" name="gender" formControlName="gender">
+                            <label for="female">female</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Age<span class="text-danger">*</span></label>
+                        <input matInput class="form-control" formControlName="age" type="text"
+                            [ngClass]="{ 'is-invalid': submitted && f.age.errors }">
+                        <div *ngIf="submitted&&f.age.errors" class="invalid-feedback d-block font-20">
+                            <div *ngIf="f.age.errors.required">
+                                Age is required
+                            </div>
+                            <div *ngIf="f.age.errors.pattern">
+                                Age is number.
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Height(cm)<span class="text-danger">*</span></label>
+                        <input matInput class="form-control" formControlName="height" type="text"
+                            [ngClass]="{ 'is-invalid': submitted && f.height.errors }">
+                        <div *ngIf="submitted&&f.height.errors" class="invalid-feedback d-block font-20">
+                            <div *ngIf="f.height.errors.required">
+                                Height is required
+                            </div>
+                            <div *ngIf="f.height.errors.pattern">
+                                Height is number.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Current Weight(Kg)<span class="text-danger">*</span></label>
+                        <input matInput class="form-control" formControlName="currentWeight" type="text"
+                            [ngClass]="{ 'is-invalid': submitted && f.currentWeight.errors }">
+                        <div *ngIf="submitted&&f.currentWeight.errors" class="invalid-feedback d-block font-20">
+                            <div *ngIf="f.currentWeight.errors.required">
+                                Weight is required
+                            </div>
+                            <div *ngIf="f.currentWeight.errors.pattern">
+                                Weight is number.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Goal Weight(Kg)<span class="text-danger">*</span></label>
+                        <input matInput class="form-control" formControlName="goalWeight" type="text"
+                            [ngClass]="{ 'is-invalid': submitted && f.goalWeight.errors }">
+                        <div *ngIf="submitted&&f.goalWeight.errors" class="invalid-feedback d-block font-20">
+                            <div *ngIf="f.goalWeight.errors.required">
+                                Weight is required
+                            </div>
+                            <div *ngIf="f.goalWeight.errors.pattern">
+                                Weight is number.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h3> What specific goal are you looking to achieve for the next 8 weeks?</h3>
+                        <p>Reduce Body Fat = Cutting Diet = Less Food NeededIncrease Muscle Mass = Bulking Diet =
+                            More Food
+                            Needed<span class="text-danger">*</span></p>
+
+                        <input matInput class="form-control" formControlName="reduceFat" type="text"
+                            [ngClass]="{ 'is-invalid': submitted && f.reduceFat.errors }" placeholder="Reduce body fat">
+                        <div *ngIf="submitted&&f.reduceFat.errors" class="invalid-feedback d-block font-20">
+                            <div *ngIf="f.reduceFat.errors.required">
+                                Reduce body fat is required
+                            </div>
+                            <div *ngIf="f.reduceFat.errors.pattern">
+                                Reduce body fat is number.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h4> Besides the gym how would you describe your daily activities? What do you do throughout
+                            the day?<span class="text-danger">*</span>
+                        </h4>
+                        <select matInput class="form-control" formControlName="activity"
+                        [ngClass]="{ 'is-invalid': submitted && f.activity.errors }">
+                            <option value="">Choose activity.</option>
+                            <option *ngFor="let item of activities">{{item}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label> Days per week exercising?</label>
+                        <input matInput class="form-control" formControlName="exercisePerWeek" type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <label> Minutes per day exercising including cardio?</label>
+                        <input matInput class="form-control" formControlName="minutesPerDay" type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <label> What foods do you dislike or allergies?</label>
+                        <input matInput class="form-control" formControlName="dislikeFoodOrAllergy" type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <label> What are your favorite healthy foods?</label>
+                        <input matInput class="form-control" formControlName="favoriteFood" type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <h3>Current eating habits?</h3>
+                        <p>What foods do you usually eat throughout the day?</p>
+                        <input matInput class="form-control" formControlName="eatHabit" type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <label> Former Coach?</label>
+                        <input matInput class="form-control" formControlName="couch" type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <label> Where did you hear about me?</label>
+                        <input matInput class="form-control" formControlName="hear" type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <label> Instagram Username:</label>
+                        <input matInput class="form-control" formControlName="instagram" type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <h3>Email:<span class="text-danger">*</span></h3>
+                        <p>Please type correctly!</p>
+                        <input matInput class="form-control" formControlName="email" type="text"
+                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                        <div *ngIf="submitted&&f.email.errors" class="invalid-feedback d-block font-20">
+                            <div *ngIf="f.email.errors.required">
+                                Email is required
+                            </div>
+                            <div *ngIf="f.email.errors.pattern">
+                                Invalid email
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <h3>Confirm Email:<span class="text-danger">*</span></h3>
+                        <p>Please type correctly!</p>
+                        <input matInput class="form-control" formControlName="confirmEmail" type="text"
+                            [ngClass]="{ 'is-invalid': submitted && f.confirmEmail.errors }">
+                        <div *ngIf="submitted&&f.confirmEmail.errors" class="invalid-feedback d-block font-20">
+                            <div *ngIf="f.confirmEmail.errors.required">
+                                ConfirmEmail is required
+                            </div>
+                            <div *ngIf="f.confirmEmail.errors.pattern">
+                                Invalid ConfirmEmail
+                            </div>
+                        </div>
+                    </div> -->
+
+
+                    <div class="form-group">
+                        <label> Additional Info:</label>
+                        <textarea matInput class="form-control" formControlName="addInfo" type="text"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label> Promo Code:</label>
+                        <textarea matInput class="form-control" formControlName="promoCode" type="text"></textarea>
+                    </div>
+
+
+                    <div class="text-center">
+                        <button type="submit" style="bottom: 0;" class=" mb-3 text-white font-bold color-check-in">
+                            Register
+                        </button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

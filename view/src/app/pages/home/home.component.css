@@ -1,0 +1,12 @@
+.back-img{
+    background-image: url('./../../../assets/images/background/image_2.jpg');
+    background-size: cover;
+
+}
+.button-div{
+    margin-left: 70%;
+    margin-top:30%;
+}
+.bg-opacity{
+    background-color: rgb(0, 0, 0,0.4);
+}

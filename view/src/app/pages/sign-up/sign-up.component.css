@@ -1,0 +1,8 @@
+.back-img{
+    background: url('./../../../assets/images/background/image_2.jpg');
+    background-size: cover;
+}
+.form-color{
+    background-color: white;
+    width:40%
+}

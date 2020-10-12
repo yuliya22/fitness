@@ -1,0 +1,8 @@
+.back-img{
+    background-image: url('./../../../assets/images/background/image_2.jpg');
+    background-size: cover;
+}
+.bg-opacity{
+    background-color: rgb(0, 0, 0,0.4);
+
+}
