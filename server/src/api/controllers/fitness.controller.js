@@ -57,6 +57,8 @@ exports.payment = async (req, res) => {
     // call the create Pay method 
     createPay(payment)
       .then((transaction) => {
+        console.log('transaction')
+        console.log(transaction)
         var id = transaction.id;
         var links = transaction.links;
         var counter = links.length;

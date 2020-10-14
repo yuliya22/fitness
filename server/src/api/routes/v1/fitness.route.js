@@ -4,6 +4,7 @@ const { http } = require('../../../config/logger');
 const router = express.Router();
 const controller = require('../../controllers/fitness.controller');
 
+var paypal = require('paypal-rest-sdk');
 
 
 router.route('/register')
@@ -16,8 +17,21 @@ router.route('/payment')
 router.get('/success' , (req ,res ) => {
   console.log('req.query'); 
   console.log(req.query); 
+  var paymentId = req.query.paymentId;
+  var payerId = { 'payer_id': req.query.PayerID };
+
+  paypal.payment.execute(paymentId, payerId, function(error, payment){
+      if(error){
+          console.error(error);
+      } else {
+          if (payment.state == 'approved'){ 
+            res.redirect('http://localhost:4200/signUp'); 
+          } else {
+              res.send('payment not successful');
+          }
+      }
+  });
   // res.redirect(httpStatus.OK).json('ok')
-  res.redirect('http://localhost:4200/signUp'); 
 })
 
 // error page 
